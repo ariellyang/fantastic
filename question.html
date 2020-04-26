@@ -524,32 +524,18 @@
 
 
         function cal() {
-            setInnertext = (ele, value) => {
-                ele.innerText = value;
-            }
 
+            let scores = Array.from(new Array(5));
 
-
-
-            setInnertext(ans1, ques1.reduce((acc, val) => {
+            scores.forEach((ele, i, arr) => {
+                arr[i] = eval(`ques${i + 1}`).reduce((acc, val) => {
                 return acc + val
-            }, 0))
+            }, 0)
+            })
 
-            setInnertext(ans2, ques2.reduce((acc, val) => {
-                return acc + val
-            }, 0))
+            chart.data.datasets[0].data = [...scores];
+            chart.update()
 
-            setInnertext(ans3, ques3.reduce((acc, val) => {
-                return acc + val
-            }, 0))
-
-            setInnertext(ans4, ques4.reduce((acc, val) => {
-                return acc + val
-            }, 0))
-
-            setInnertext(ans5, ques5.reduce((acc, val) => {
-                return acc + val
-            }, 0))
 
         }
 
